@@ -5,4 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="leeractiviteit">Dit zijn je leeractiviteiten voor vandaag:</string>
+    <string name="resultaat">Dit zijn je resultaten:</string>
+    <string name="lesrooster">Dit is je laatste resultaat:</string>
 </resources>
