@@ -4,9 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.diewevg.bm12applicatie.R;
 
@@ -106,5 +108,9 @@ public class Resultaat extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void OnListItemClick(ListView l, View v, int position, long id) {
+        Log.d("ListItem", "Listitem is clicked");
     }
 }

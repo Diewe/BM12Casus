@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.diewevg.bm12applicatie.R;
 import com.example.diewevg.bm12applicatie.dummy.DummyContent;
@@ -104,5 +106,9 @@ public class LeeractiviteitFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
+    }
+
+    public void OnListItemClick(ListView l, View v, int position, long id) {
+        Log.d("ListItem", "Listitem is clicked");
     }
 }

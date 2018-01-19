@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="sections">
-        <item >Werkcollege 1 BM12</item>
-        <item >Hoorcollege BM12</item>
-        <item >Werkcollege 2 BM12</item>
-        <item >Discussiecollege BM12</item>
-        <item >CiS BM12</item>
+    <string-array name="resultaten">
+        <item >BM12: 7.0</item>
+        <item >BM01: 6.4</item>
+        <item >BM07: 8.1</item>>
     </string-array>
 </resources>
