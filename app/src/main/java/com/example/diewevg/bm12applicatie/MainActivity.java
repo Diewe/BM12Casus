@@ -18,13 +18,14 @@ import android.view.MenuItem;
 
 import com.example.diewevg.bm12applicatie.Leeractiviteit.LeeractiviteitFragment;
 import com.example.diewevg.bm12applicatie.Resultaten.Resultaat;
+import com.example.diewevg.bm12applicatie.Rooster.LesRooster;
 import com.example.diewevg.bm12applicatie.dummy.DummyContent;
 
 public class MainActivity extends AppCompatActivity
     implements
         Resultaat.OnFragmentInteractionListener,
         LeeractiviteitFragment.OnListFragmentInteractionListener,
-        //LesRooster.OnFragmentInteractionListener,
+        LesRooster.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -97,9 +98,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.resultaat) {
             fragment = new Resultaat();
         } else if (id == R.id.lesrooster) {
-
+            fragment = new LesRooster();
         } else if (id == R.id.nav_share) {
-
 
         } else if (id == R.id.nav_send) {
 
