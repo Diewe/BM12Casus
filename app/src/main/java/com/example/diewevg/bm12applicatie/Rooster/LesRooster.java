@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.diewevg.bm12applicatie.R;
+import com.example.diewevg.bm12applicatie.Models.Student;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,8 +67,17 @@ public class LesRooster extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_les_rooster, container, false);
+
+        View RootView = inflater.inflate(R.layout.fragment_les_rooster, container, false);
+
+        Student student1 = new Student( "Diewe", "Van Geffen", "1331914");
+
+        TextView studentText = (TextView) RootView.findViewById(R.id.testStudent);
+        String naam = student1.getAchternaam();
+        Log.i("Student", naam);
+        studentText.setText(naam);
+
+        return RootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
