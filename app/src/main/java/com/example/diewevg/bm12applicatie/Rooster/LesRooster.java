@@ -10,6 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.diewevg.bm12applicatie.R;
 import com.example.diewevg.bm12applicatie.Models.Student;
 
@@ -76,6 +82,26 @@ public class LesRooster extends Fragment {
         String naam = student1.getAchternaam();
         Log.i("Student", naam);
         studentText.setText(naam);
+
+        final TextView mTextView = (TextView) RootView.findViewById(R.id.request);
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url ="http://www.google.com";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        mTextView.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
 
         return RootView;
     }
