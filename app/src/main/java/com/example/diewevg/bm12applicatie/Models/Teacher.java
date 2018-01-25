@@ -1,22 +1,20 @@
 package com.example.diewevg.bm12applicatie.Models;
 
 /**
- * Created by Diewevg on 21-1-2018.
+ * Created by Diewevg on 25-1-2018.
  */
 
-public class Student {
+public class Teacher {
     String voornaam;
     String achternaam;
-    String studentnummer;
     String email;
 
-    public Student() {}
+    public Teacher() {}
 
-    public Student(String voornaam, String achternaam, String studentnummer, String email)
+    public Teacher(String voornaam, String achternaam, String email)
     {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
-        this.studentnummer = studentnummer;
         this.email = email;
     }
 
@@ -36,11 +34,11 @@ public class Student {
         this.achternaam = achternaam;
     }
 
-    public String getStudentnummer(){
-        return studentnummer;
+    public String getEmail(){
+        return email;
     }
 
-    public void setStudentnummer(String studentnummer) {
-        this.studentnummer = studentnummer;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
