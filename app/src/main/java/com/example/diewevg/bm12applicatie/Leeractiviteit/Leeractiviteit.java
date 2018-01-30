@@ -1,41 +1,33 @@
-package com.example.diewevg.bm12applicatie.Resultaten;
+package com.example.diewevg.bm12applicatie.Leeractiviteit;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.diewevg.bm12applicatie.Models.Activity;
 import com.example.diewevg.bm12applicatie.R;
+import com.example.diewevg.bm12applicatie.Resultaten.DetailResultaat;
+import com.example.diewevg.bm12applicatie.Resultaten.ResultaatAdapter;
+import com.example.diewevg.bm12applicatie.Resultaten.ResultaatModel;
 
 import java.util.ArrayList;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Resultaat.OnFragmentInteractionListener} interface
+ * {@link Leeractiviteit.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Resultaat#newInstance} factory method to
+ * Use the {@link Leeractiviteit#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Resultaat extends Fragment implements
-        DetailResultaat.OnFragmentInteractionListener
-{
+public class Leeractiviteit extends Fragment {
     public ListView listView;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,7 +39,7 @@ public class Resultaat extends Fragment implements
 
     private OnFragmentInteractionListener mListener;
 
-    public Resultaat() {
+    public Leeractiviteit() {
         // Required empty public constructor
     }
 
@@ -57,11 +49,11 @@ public class Resultaat extends Fragment implements
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Resultaat.
+     * @return A new instance of fragment Leeractiviteit.
      */
     // TODO: Rename and change types and number of parameters
-    public static Resultaat newInstance(String param1, String param2) {
-        Resultaat fragment = new Resultaat();
+    public static Leeractiviteit newInstance(String param1, String param2) {
+        Leeractiviteit fragment = new Leeractiviteit();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -81,20 +73,21 @@ public class Resultaat extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View RootView = inflater.inflate(R.layout.resultaat, container, false);
+        // Inflate the layout for this fragment
+        View RootView = inflater.inflate(R.layout.fragment_leeractiviteit, container, false);
 
         // Construct the data source
-        ArrayList<ResultaatModel> arrayOfUsers = new ArrayList<ResultaatModel>();
+        ArrayList<LeeractiviteitModel> arrayOfLeeractiviteit = new ArrayList<LeeractiviteitModel>();
         // Create the adapter to convert the array to views
-        ResultaatAdapter adapter = new ResultaatAdapter(getActivity(), arrayOfUsers);
+        LeeractiviteitAdapter adapter = new LeeractiviteitAdapter(getActivity(), arrayOfLeeractiviteit);
 
-        ResultaatModel newUser = new ResultaatModel("7,9", "BM01");
-        adapter.add(newUser);
+        LeeractiviteitModel newLeeractiviteit = new LeeractiviteitModel("Werkcollege", "BM01");
+        adapter.add(newLeeractiviteit);
 
-        ResultaatModel extraUser = new ResultaatModel("6,3", "BM12");
-        adapter.add(extraUser);
+        LeeractiviteitModel extraLeeractiviteit = new LeeractiviteitModel("Hoorcollege", "BM12");
+        adapter.add(extraLeeractiviteit);
         // Attach the adapter to a ListView
-        listView = (ListView) RootView.findViewById(R.id.listView1);
+        listView = (ListView) RootView.findViewById(R.id.LijstLeeractiviteit);
         listView.setAdapter(adapter);
 
         // Item Click Listener for the listview
@@ -102,12 +95,11 @@ public class Resultaat extends Fragment implements
             @Override
             public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
                 Fragment fragment = null;
-                fragment = new DetailResultaat();
+                fragment = new DetailLeeractiviteit();
 
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_container, fragment).commit();
-
 
             }
         };
@@ -117,6 +109,8 @@ public class Resultaat extends Fragment implements
         //new BackGround().execute();
         // Inflate the layout for this fragment
         return RootView;
+
+        //return inflater.inflate(R.layout.fragment_leeractiviteit, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -143,11 +137,6 @@ public class Resultaat extends Fragment implements
         mListener = null;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -163,4 +152,3 @@ public class Resultaat extends Fragment implements
         void onFragmentInteraction(Uri uri);
     }
 }
-

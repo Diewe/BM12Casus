@@ -2,40 +2,23 @@ package com.example.diewevg.bm12applicatie.Resultaten;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.diewevg.bm12applicatie.Models.Activity;
 import com.example.diewevg.bm12applicatie.R;
-
-import java.util.ArrayList;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Resultaat.OnFragmentInteractionListener} interface
+ * {@link DetailResultaat.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Resultaat#newInstance} factory method to
+ * Use the {@link DetailResultaat#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Resultaat extends Fragment implements
-        DetailResultaat.OnFragmentInteractionListener
-{
-    public ListView listView;
-
+public class DetailResultaat extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,7 +30,7 @@ public class Resultaat extends Fragment implements
 
     private OnFragmentInteractionListener mListener;
 
-    public Resultaat() {
+    public DetailResultaat() {
         // Required empty public constructor
     }
 
@@ -57,11 +40,11 @@ public class Resultaat extends Fragment implements
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Resultaat.
+     * @return A new instance of fragment DetailResultaat.
      */
     // TODO: Rename and change types and number of parameters
-    public static Resultaat newInstance(String param1, String param2) {
-        Resultaat fragment = new Resultaat();
+    public static DetailResultaat newInstance(String param1, String param2) {
+        DetailResultaat fragment = new DetailResultaat();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -81,42 +64,8 @@ public class Resultaat extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View RootView = inflater.inflate(R.layout.resultaat, container, false);
-
-        // Construct the data source
-        ArrayList<ResultaatModel> arrayOfUsers = new ArrayList<ResultaatModel>();
-        // Create the adapter to convert the array to views
-        ResultaatAdapter adapter = new ResultaatAdapter(getActivity(), arrayOfUsers);
-
-        ResultaatModel newUser = new ResultaatModel("7,9", "BM01");
-        adapter.add(newUser);
-
-        ResultaatModel extraUser = new ResultaatModel("6,3", "BM12");
-        adapter.add(extraUser);
-        // Attach the adapter to a ListView
-        listView = (ListView) RootView.findViewById(R.id.listView1);
-        listView.setAdapter(adapter);
-
-        // Item Click Listener for the listview
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
-                Fragment fragment = null;
-                fragment = new DetailResultaat();
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, fragment).commit();
-
-
-            }
-        };
-
-        // Setting the item click listener for the listview
-        listView.setOnItemClickListener(itemClickListener);
-        //new BackGround().execute();
         // Inflate the layout for this fragment
-        return RootView;
+        return inflater.inflate(R.layout.fragment_detail_resultaat, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -143,11 +92,6 @@ public class Resultaat extends Fragment implements
         mListener = null;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -163,4 +107,3 @@ public class Resultaat extends Fragment implements
         void onFragmentInteraction(Uri uri);
     }
 }
-
