@@ -102,7 +102,8 @@ public class DetailLeeractiviteit extends Fragment {
         View RootView = inflater.inflate(R.layout.fragment_detail_leeractiviteit, container, false);
 
         Bundle bundle = this.getArguments();
-        String value = bundle.getString("Leeractiviteit");
+        final String value = bundle.getString("Leeractiviteit");
+        setData(value, RootView);
 
         ratingBar = (RatingBar) RootView.findViewById(R.id.ratingBar);
         reviewButton = (Button) RootView.findViewById(R.id.reviewButton);
@@ -114,12 +115,24 @@ public class DetailLeeractiviteit extends Fragment {
                 entryData = (EditText) getActivity().findViewById(R.id.textInput);
                 String dataToSave = entryData.getText().toString();
                 String FILENAME = "myFile";
+                if (value.equals("0")) {
+                    FILENAME = "file0";
+                }
+                if (value.equals("1")){
+                    FILENAME = "file1";
+                }
+                Log.d("filename", FILENAME);
                 generateNoteOnSD(getActivity(), FILENAME, dataToSave);
-                //saveInInternalStorage(RootView, getActivity());
             }
         });
 
-        String text = readFile("myFile", getActivity());
+        String text =  "";
+        if (value.equals("0")) {
+            text = readFile("file0", getActivity());
+        }
+        if (value.equals("1")){
+            text = readFile("file1", getActivity());
+        }
 
         //Find the view by its id
         TextView tv = (TextView) RootView.findViewById(R.id.review);
@@ -172,11 +185,12 @@ public class DetailLeeractiviteit extends Fragment {
 
     public void generateNoteOnSD(Context context, String sFileName, String sBody) {
         try {
+            //sFileName = "myFile";
             File file = new File(context.getExternalFilesDir(
-                    Environment.DIRECTORY_PICTURES), sFileName);
+                    Environment.DIRECTORY_PICTURES), "myFile");
 
             File gpxfile = new File(file, sFileName);
-
+            gpxfile.createNewFile();
 
             if (!gpxfile.exists()) {
                 gpxfile.createNewFile();
@@ -203,15 +217,13 @@ public class DetailLeeractiviteit extends Fragment {
     public String readFile(String sFileName, Context context) {
         try {
             File file = new File(context.getExternalFilesDir(
-                    Environment.DIRECTORY_PICTURES), sFileName);
+                    Environment.DIRECTORY_PICTURES), "MyFile");
 
             File gpxfile = new File(file, sFileName);
 
             if (!gpxfile.exists()) {
                 return "Nog geen feedback toegevoegd";
             }
-
-            File sdcard = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
             StringBuilder text = new StringBuilder();
 
@@ -229,5 +241,34 @@ public class DetailLeeractiviteit extends Fragment {
             e.printStackTrace();
         }
         return "Er is iets fout gegaan bij opslaan van de review";
+    }
+
+    public void setData(String id, View view) {
+        //Find the view by its id
+        TextView naam = (TextView) view.findViewById(R.id.naamLeeractiviteit);
+        TextView soort = (TextView) view.findViewById(R.id.soortLeeractiviteit);
+        TextView docent = (TextView) view.findViewById(R.id.docentLeeractiviteit);
+        TextView datum = (TextView) view.findViewById(R.id.datumLeeractiviteit);
+        TextView tijdstip = (TextView) view.findViewById(R.id.tijdstipLeeractiviteit);
+        TextView luchtvochtigheid = (TextView) view.findViewById(R.id.luchtvochtigheidLeeractiviteit);
+        Log.d("id", id);
+        if (id.equals("0")) {
+            Log.d("test", id);
+            naam.setText("Naam:  BM01");
+            soort.setText("Soort college:  Werkcollege");
+            docent.setText("Docent:  Van de Laar");
+            datum.setText("Datum:  30-1-2018");
+            tijdstip.setText("Tijdstip:  10:00 - 13:00");
+            luchtvochtigheid.setText("Luchtvochtigheid:  5%");
+        }
+        if(id.equals("1")){
+            Log.d("test", id);
+            naam.setText("Naam:  BM12");
+            soort.setText("Soort college:  Hoorcollege");
+            docent.setText("Docent:  Nijssen");
+            datum.setText("Datum:  1-2-2018");
+            tijdstip.setText("Tijdstip:  12:00 - 13:00");
+            luchtvochtigheid.setText("Luchtvochtigheid:  3%");
+        }
     }
 }

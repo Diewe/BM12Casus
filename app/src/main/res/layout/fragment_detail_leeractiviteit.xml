@@ -6,30 +6,22 @@
 
     <TextView android:id="@+id/naamLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cursus:  BM12"/>
+        android:layout_height="wrap_content" />
     <TextView android:id="@+id/soortLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Soort college:  Hoorcollege"/>
+        android:layout_height="wrap_content" />
     <TextView android:id="@+id/docentLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Docent:  Van de Laar"/>
+        android:layout_height="wrap_content" />
     <TextView android:id="@+id/datumLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Datum:  30-1-2018"/>
+        android:layout_height="wrap_content" />
     <TextView android:id="@+id/tijdstipLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tijdstip:  12:00-13:00"/>
+        android:layout_height="wrap_content" />
     <TextView android:id="@+id/luchtvochtigheidLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Luchtvochtigheid:  50%"/>
-
-
+        android:layout_height="wrap_content" />
 
     <RatingBar
         android:id="@+id/ratingBar"
