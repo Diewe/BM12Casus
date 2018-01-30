@@ -101,6 +101,9 @@ public class DetailLeeractiviteit extends Fragment {
                              Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.fragment_detail_leeractiviteit, container, false);
 
+        Bundle bundle = this.getArguments();
+        String value = bundle.getString("Leeractiviteit");
+
         ratingBar = (RatingBar) RootView.findViewById(R.id.ratingBar);
         reviewButton = (Button) RootView.findViewById(R.id.reviewButton);
         reviewButton.setOnClickListener(new View.OnClickListener()

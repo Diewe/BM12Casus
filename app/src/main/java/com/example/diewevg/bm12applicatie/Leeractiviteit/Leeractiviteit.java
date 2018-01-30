@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,11 @@ public class Leeractiviteit extends Fragment {
                 Fragment fragment = null;
                 fragment = new DetailLeeractiviteit();
 
+                String positie = String.valueOf(position);
+                Bundle bundle = new Bundle();
+                bundle.putString("Leeractiviteit", positie);
+                fragment.setArguments(bundle);
+
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.frame_container, fragment).commit();
@@ -109,8 +115,6 @@ public class Leeractiviteit extends Fragment {
         //new BackGround().execute();
         // Inflate the layout for this fragment
         return RootView;
-
-        //return inflater.inflate(R.layout.fragment_leeractiviteit, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
