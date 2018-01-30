@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.diewevg.bm12applicatie.R;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -80,20 +81,6 @@ public class DetailLeeractiviteit extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-        /*String filename = "myfile";
-        String string = "Hello world!";
-        FileOutputStream outputStream;
-        File file = new File(getActivity().getFilesDir(), filename);
-
-        try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(string.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override
@@ -113,7 +100,10 @@ public class DetailLeeractiviteit extends Fragment {
             public void onClick(View RootView)
             {
                 entryData = (EditText) getActivity().findViewById(R.id.textInput);
+                Float stars = ratingBar.getRating();
+                String starsString = Float.toString(stars);
                 String dataToSave = entryData.getText().toString();
+                String dataStars = dataToSave + "&&" + starsString;
                 String FILENAME = "myFile";
                 if (value.equals("0")) {
                     FILENAME = "file0";
@@ -122,7 +112,7 @@ public class DetailLeeractiviteit extends Fragment {
                     FILENAME = "file1";
                 }
                 Log.d("filename", FILENAME);
-                generateNoteOnSD(getActivity(), FILENAME, dataToSave);
+                generateNoteOnSD(getActivity(), FILENAME, dataStars);
             }
         });
 
@@ -134,11 +124,18 @@ public class DetailLeeractiviteit extends Fragment {
             text = readFile("file1", getActivity());
         }
 
+        Log.d("text", text);
+        String[] splitData = text.split("&&");
+        String review = splitData[0];
+        String stars = splitData[1];
+        float floatStars = Float.parseFloat(stars);
+
         //Find the view by its id
         TextView tv = (TextView) RootView.findViewById(R.id.review);
 
         //Set the text
-        tv.setText(text);
+        tv.setText(review);
+        ratingBar.setRating(floatStars);
 
         //File sdcard = Environment.getExternalStorageDirectory();
         return RootView;
@@ -200,15 +197,22 @@ public class DetailLeeractiviteit extends Fragment {
             writer.append(sBody);
             writer.flush();
             writer.close();
+
             Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
 
             String text = readFile(sFileName, context);
 
             //Find the view by its id
+            String[] splitData = text.split("&&");
+            String review = splitData[0];
+            String stars = splitData[1];
+            float floatStars = Float.parseFloat(stars);
+
             TextView tv = (TextView) getActivity().findViewById(R.id.review);
 
             //Set the text
-            tv.setText(text);
+            tv.setText(review);
+            ratingBar.setRating(floatStars);
         } catch (IOException e) {
             e.printStackTrace();
         }
