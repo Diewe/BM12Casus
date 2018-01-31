@@ -4,11 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.diewevg.bm12applicatie.R;
+import com.example.diewevg.bm12applicatie.Models.Student;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,8 +76,71 @@ public class LesRooster extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_les_rooster, container, false);
+
+        View RootView = inflater.inflate(R.layout.fragment_les_rooster, container, false);
+
+        Student student1 = new Student( "Diewe", "Van Geffen", "1331914", "diewevangeffen@gmail.com");
+
+        TextView studentText = (TextView) RootView.findViewById(R.id.testStudent);
+        String naam = student1.getAchternaam();
+        Log.i("Student", naam);
+        studentText.setText(naam);
+
+        final TextView mTextView = (TextView) RootView.findViewById(R.id.request);
+
+        //Get Request
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url ="http://www.google.com"; //http://ptsv2.com/t/bm12/post
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        mTextView.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
+
+
+        url = "http://ptsv2.com/t/bm12/post";
+        //Post Request
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", "error");
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("name", "Alif");
+                params.put("domain", "http://itsalif.info");
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+
+        return RootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

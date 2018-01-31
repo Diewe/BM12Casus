@@ -1,13 +1,36 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.diewevg.bm12applicatie.Rooster.LesRooster">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<TextView android:id="@+id/request"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=""/>
+
+<TextView android:id="@+id/testStudent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="testtesttest"/>
+
+</LinearLayout>
+
+    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Uw lesrooster is onbekend" />
+        tools:context="com.example.diewevg.bm12applicatie.Rooster.LesRooster">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/testStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
+    </FrameLayout>-->

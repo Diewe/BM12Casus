@@ -16,15 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.diewevg.bm12applicatie.Leeractiviteit.LeeractiviteitFragment;
+import com.example.diewevg.bm12applicatie.Leeractiviteit.DetailLeeractiviteit;
+import com.example.diewevg.bm12applicatie.Resultaten.DetailResultaat;
 import com.example.diewevg.bm12applicatie.Resultaten.Resultaat;
 import com.example.diewevg.bm12applicatie.Rooster.LesRooster;
-import com.example.diewevg.bm12applicatie.dummy.DummyContent;
+import com.example.diewevg.bm12applicatie.Leeractiviteit.Leeractiviteit;
 
 public class MainActivity extends AppCompatActivity
     implements
         Resultaat.OnFragmentInteractionListener,
-        LeeractiviteitFragment.OnListFragmentInteractionListener,
+        DetailResultaat.OnFragmentInteractionListener,
+        Leeractiviteit.OnFragmentInteractionListener,
+        DetailLeeractiviteit.OnFragmentInteractionListener,
         LesRooster.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,15 +37,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -94,7 +88,7 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment = null;
         if (id == R.id.leeractiviteit) {
-            fragment = new LeeractiviteitFragment();
+            fragment = new Leeractiviteit();
         } else if (id == R.id.resultaat) {
             fragment = new Resultaat();
         } else if (id == R.id.lesrooster) {
@@ -121,8 +115,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }
