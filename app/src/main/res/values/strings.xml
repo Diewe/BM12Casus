@@ -12,5 +12,26 @@
     <string name="lesrooster">Dit is je laatste resultaat:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="Leeractiviteit">leeractiviteit: hoorcollege</string>
+    <string name="lokaal">lokaal: B.3.206</string>
+    <string name="tijdstip">tijdstip: 8:00 - 9:00</string>
+    <string name="temperatuur">temperatuur: 22 graden</string>
+    <string name="geluidsniveau">geluidsniveau: 36 DB</string>
+    <string name="luchtvochtigheid">luchtvochtigheid: 33%</string>
+    <string name="feedback">geef uw feedback.</string>
+    <string name="verzenden">verzenden</string>
+    <string name="aanwezigen">aanwezigen: 12</string>
+    <string name="opmerkingen">opmerkingen: 6</string>
+    <string name="gemiddelde_score">gemiddelde score:</string>
+    <string name="aanwezigenlijst">aanwezigenlijst</string>
+    <string name="opmerkingen_knop">opmerkingen</string>
+    <string name="punten">punten</string>
+    <string name="notitie_sturen_knop">notitie sturen</string>
+    <string name="leerlingennummer">leerlingennummer: 14238593</string>
+    <string name="email">email: 14238593tomsen@zuyd.nl</string>
+    <string name="aanwezigheid_knop">aanwezigheid</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

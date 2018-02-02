@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_aanwezigheid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.diewevg.bm12applicatie.Docent.aanwezigenlijst_docent">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:id="@+id/TXT_leerlingennummer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/leerlingennummer" />
+
+    <TextView
+        android:id="@+id/TXT_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TXT_leerlingennummer"
+        android:layout_alignStart="@+id/TXT_leerlingennummer"
+        android:layout_below="@+id/TXT_leerlingennummer"
+        android:layout_marginTop="29dp"
+        android:text="@string/email" />
+
+    <Button
+        android:id="@+id/BTN_aanwezigheid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BTN_punten"
+        android:layout_alignBottom="@+id/BTN_punten"
+        android:layout_alignLeft="@+id/TXT_email"
+        android:layout_alignStart="@+id/TXT_email"
+        android:text="@string/aanwezigheid_knop" />
+
+    <Button
+        android:id="@+id/BTN_punten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BTN_opmerkingen"
+        android:layout_marginBottom="46dp"
+        android:layout_toEndOf="@+id/TXT_leerlingennummer"
+        android:layout_toRightOf="@+id/TXT_leerlingennummer"
+        android:text="@string/punten" />
+
+    <Button
+        android:id="@+id/BTN_opmerkingen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/BTN_aanwezigheid"
+        android:layout_alignStart="@+id/BTN_aanwezigheid"
+        android:layout_centerVertical="true"
+        android:text="@string/opmerkingen_knop" />
+
+    <Button
+        android:id="@+id/BTN_notities_sturen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BTN_opmerkingen"
+        android:layout_alignBottom="@+id/BTN_opmerkingen"
+        android:layout_alignLeft="@+id/BTN_punten"
+        android:layout_alignStart="@+id/BTN_punten"
+        android:text="@string/notitie_sturen_knop" />
+</RelativeLayout>

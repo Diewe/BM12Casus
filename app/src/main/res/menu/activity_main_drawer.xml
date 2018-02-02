@@ -5,9 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/leeractiviteit"
+            android:id="@+id/leeractiviteit_student"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Leeractiviteiten" />
+            android:title="Leeractiviteiten - student" />
+        <item
+            android:id="@+id/leeractiviteit_docent"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Leeractiviteiten - docent" />
         <item
             android:id="@+id/resultaat"
             android:icon="@drawable/ic_menu_gallery"
@@ -16,6 +20,7 @@
             android:id="@+id/lesrooster"
             android:icon="@drawable/ic_menu_manage"
             android:title="Lesrooster" />
+
     </group>
 
     <item android:title="Communicate">

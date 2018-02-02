@@ -1,34 +1,33 @@
-package com.example.diewevg.bm12applicatie.Leeractiviteit;
+package com.example.diewevg.bm12applicatie.Student;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.diewevg.bm12applicatie.Leeractiviteit.DetailLeeractiviteit;
+import com.example.diewevg.bm12applicatie.Leeractiviteit.LeeractiviteitAdapter;
+import com.example.diewevg.bm12applicatie.Leeractiviteit.LeeractiviteitModel;
 import com.example.diewevg.bm12applicatie.R;
-import com.example.diewevg.bm12applicatie.Resultaten.DetailResultaat;
-import com.example.diewevg.bm12applicatie.Resultaten.ResultaatAdapter;
-import com.example.diewevg.bm12applicatie.Resultaten.ResultaatModel;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Leeractiviteit.OnFragmentInteractionListener} interface
+ * {@link leeractiviteit_student.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Leeractiviteit#newInstance} factory method to
+ * Use the {@link leeractiviteit_student#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Leeractiviteit extends Fragment {
-    public ListView listView;
+public class leeractiviteit_student extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,7 +39,7 @@ public class Leeractiviteit extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Leeractiviteit() {
+    public leeractiviteit_student() {
         // Required empty public constructor
     }
 
@@ -50,11 +49,11 @@ public class Leeractiviteit extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Leeractiviteit.
+     * @return A new instance of fragment leeractiviteit_student.
      */
     // TODO: Rename and change types and number of parameters
-    public static Leeractiviteit newInstance(String param1, String param2) {
-        Leeractiviteit fragment = new Leeractiviteit();
+    public static leeractiviteit_student newInstance(String param1, String param2) {
+        leeractiviteit_student fragment = new leeractiviteit_student();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,46 +74,9 @@ public class Leeractiviteit extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View RootView = inflater.inflate(R.layout.fragment_leeractiviteit, container, false);
+        return inflater.inflate(R.layout.fragment_leeractiviteit_student, container, false);
 
-        // Construct the data source
-        ArrayList<LeeractiviteitModel> arrayOfLeeractiviteit = new ArrayList<LeeractiviteitModel>();
-        // Create the adapter to convert the array to views
-        LeeractiviteitAdapter adapter = new LeeractiviteitAdapter(getActivity(), arrayOfLeeractiviteit);
 
-        LeeractiviteitModel newLeeractiviteit = new LeeractiviteitModel("Werkcollege", "BM01");
-        adapter.add(newLeeractiviteit);
-
-        LeeractiviteitModel extraLeeractiviteit = new LeeractiviteitModel("Hoorcollege", "BM12");
-        adapter.add(extraLeeractiviteit);
-        // Attach the adapter to a ListView
-        listView = (ListView) RootView.findViewById(R.id.naamLeeractiviteit);
-        listView.setAdapter(adapter);
-
-        // Item Click Listener for the listview
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
-                Fragment fragment = null;
-                fragment = new DetailLeeractiviteit();
-
-                String positie = String.valueOf(position);
-                Bundle bundle = new Bundle();
-                bundle.putString("Leeractiviteit", positie);
-                fragment.setArguments(bundle);
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, fragment).commit();
-
-            }
-        };
-
-        // Setting the item click listener for the listview
-        listView.setOnItemClickListener(itemClickListener);
-        //new BackGround().execute();
-        // Inflate the layout for this fragment
-        return RootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
