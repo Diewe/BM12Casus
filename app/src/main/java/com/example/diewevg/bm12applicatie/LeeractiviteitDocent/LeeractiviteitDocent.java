@@ -1,14 +1,15 @@
-package com.example.diewevg.bm12applicatie.Leeractiviteit;
+package com.example.diewevg.bm12applicatie.LeeractiviteitDocent;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -18,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.diewevg.bm12applicatie.Leeractiviteit.LeeractiviteitAdapter;
 import com.example.diewevg.bm12applicatie.Models.Activity;
 import com.example.diewevg.bm12applicatie.R;
 
@@ -31,12 +33,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Leeractiviteit.OnFragmentInteractionListener} interface
+ * {@link com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Leeractiviteit#newInstance} factory method to
+ * Use the {@link com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Leeractiviteit extends Fragment {
+public class LeeractiviteitDocent extends Fragment {
     public ListView listView;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -45,9 +47,9 @@ public class Leeractiviteit extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent.OnFragmentInteractionListener mListener;
 
-    public Leeractiviteit() {
+    public LeeractiviteitDocent() {
         // Required empty public constructor
     }
 
@@ -59,8 +61,8 @@ public class Leeractiviteit extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment Leeractiviteit.
      */
-    public static Leeractiviteit newInstance(String param1, String param2) {
-        Leeractiviteit fragment = new Leeractiviteit();
+    public static com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent newInstance(String param1, String param2) {
+        com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent fragment = new com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -81,7 +83,7 @@ public class Leeractiviteit extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View RootView = inflater.inflate(R.layout.fragment_leeractiviteit, container, false);
+        View RootView = inflater.inflate(R.layout.fragment_leeractiviteit_docent, container, false);
 
         // Construct the data source
         ArrayList<Activity> arrayOfLeeractiviteit = new ArrayList<Activity>();
@@ -129,14 +131,14 @@ public class Leeractiviteit extends Fragment {
         queue.add(jsonArrayRequest);
 
         // Attach the adapter to a ListView
-        listView = (ListView) RootView.findViewById(R.id.LijstLeeractiviteit);
+        listView = (ListView) RootView.findViewById(R.id.LijstLeeractiviteitDocent);
         listView.setAdapter(adapter);
 
         // Item Click Listener for the listview
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
-                Fragment fragment = new DetailLeeractiviteit();
+                Fragment fragment = new DetailLeeractiviteitDocent();
                 String selectedId = ((Activity) listView.getAdapter().getItem(position)).getId().toString();
 
                 Bundle bundle = new Bundle();
@@ -166,8 +168,8 @@ public class Leeractiviteit extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent.OnFragmentInteractionListener) {
+            mListener = (com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

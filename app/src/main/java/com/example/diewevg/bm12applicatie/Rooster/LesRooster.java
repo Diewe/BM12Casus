@@ -14,10 +14,18 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.diewevg.bm12applicatie.R;
 import com.example.diewevg.bm12applicatie.Models.Student;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,67 +86,55 @@ public class LesRooster extends Fragment {
                              Bundle savedInstanceState) {
 
         View RootView = inflater.inflate(R.layout.fragment_les_rooster, container, false);
-
-        Student student1 = new Student( "Diewe", "Van Geffen", "1331914", "diewevangeffen@gmail.com");
-
-        TextView studentText = (TextView) RootView.findViewById(R.id.testStudent);
-        String naam = student1.getAchternaam();
-        Log.i("Student", naam);
-        studentText.setText(naam);
-
         final TextView mTextView = (TextView) RootView.findViewById(R.id.request);
 
         //Get Request
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url ="http://www.google.com"; //http://ptsv2.com/t/bm12/post
+        String url ="http://192.168.178.17:5930/api/activities"; //http://ptsv2.com/t/bm12/post
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
+        // Initialize a new JsonArrayRequest instance
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.substring(0,500));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
-            }
-        });
-        queue.add(stringRequest);
+                    public void onResponse(JSONArray response) {
+                        // Do something with response
 
+                        // Process the JSON
+                        try{
+                            // Loop through the array elements
+                            for(int i=0;i<response.length();i++){
+                                // Get current json object
+                                JSONObject student = response.getJSONObject(i);
+                                JSONObject cursus = student.optJSONObject("Course");
 
-        url = "http://ptsv2.com/t/bm12/post";
-        //Post Request
-        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        // response
-                        Log.d("Response", response);
+                                // Get the current student (json object) data
+                                String datum = student.getString("DateTime");
+                                String startTijd = student.getString("StartTime");
+                                String EindTijd = student.getString("EndTime");
+                                String soortCollege = student.getString("ActivityType");
+                                String cursusCode = cursus.optString("CourseCode");
+
+                                // Display the formatted json data in text view
+                                mTextView.append(datum +" " + startTijd + "-" + EindTijd + "\nCursus: " + cursusCode  + "\nSoort college: " + soortCollege);
+                                mTextView.append("\n\n");
+                            }
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener(){
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", "error");
+                    public void onErrorResponse(VolleyError error){
+                        // Do something when error occurred
+                        Log.d("Error array", error.toString());
                     }
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("name", "Alif");
-                params.put("domain", "http://itsalif.info");
-
-                return params;
-            }
-        };
-        queue.add(postRequest);
+        );
+        queue.add(jsonArrayRequest);
 
         return RootView;
     }

@@ -8,21 +8,27 @@ import java.util.Date;
  */
 
 public class Activity {
+    Integer id;
     String activityType;
-    Date date;
-    Time startTime;
-    Time endTime;
+    String date;
+    String startTime;
+    String endTime;
 
 
     public Activity() {}
 
-    public Activity(String activityType, Date date, Time startTime, Time endTime)
+    public Activity(Integer id, String activityType, String date, String startTime, String endTime)
     {
+        this.id = id;
         this.activityType = activityType;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id;}
 
     public String getActivityType(){
         return activityType;
@@ -32,27 +38,27 @@ public class Activity {
         this.activityType = activityType;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getStartTime(){
+    public String getStartTime(){
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime(){
+    public String getEndTime(){
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 }

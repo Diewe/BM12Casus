@@ -43,4 +43,12 @@ public class LeeractiviteitModel {
         }
         return users;
     }
+
+    public String getSoort(){
+        return soort;
+    }
+
+    public void setSoort(String soort) {
+        this.soort = soort;
+    }
 }

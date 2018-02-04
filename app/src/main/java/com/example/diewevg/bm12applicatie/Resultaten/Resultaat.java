@@ -31,8 +31,7 @@ import java.util.ArrayList;
  * Use the {@link Resultaat#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Resultaat extends Fragment implements
-        DetailResultaat.OnFragmentInteractionListener
+public class Resultaat extends Fragment
 {
     public ListView listView;
 
@@ -97,24 +96,6 @@ public class Resultaat extends Fragment implements
         listView = (ListView) RootView.findViewById(R.id.listView1);
         listView.setAdapter(adapter);
 
-        // Item Click Listener for the listview
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View container, int position, long id) {
-                Fragment fragment = null;
-                fragment = new DetailResultaat();
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, fragment).commit();
-
-
-            }
-        };
-
-        // Setting the item click listener for the listview
-        listView.setOnItemClickListener(itemClickListener);
-        //new BackGround().execute();
         // Inflate the layout for this fragment
         return RootView;
     }
@@ -143,10 +124,7 @@ public class Resultaat extends Fragment implements
         mListener = null;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 
     /**
      * This interface must be implemented by activities that contain this

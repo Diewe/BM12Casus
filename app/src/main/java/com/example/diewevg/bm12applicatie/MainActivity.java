@@ -3,10 +3,7 @@ package com.example.diewevg.bm12applicatie;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.diewevg.bm12applicatie.Leeractiviteit.DetailLeeractiviteit;
-import com.example.diewevg.bm12applicatie.Resultaten.DetailResultaat;
+import com.example.diewevg.bm12applicatie.LeeractiviteitDocent.DetailLeeractiviteitDocent;
+import com.example.diewevg.bm12applicatie.LeeractiviteitDocent.Feedback;
+import com.example.diewevg.bm12applicatie.LeeractiviteitDocent.LeeractiviteitDocent;
 import com.example.diewevg.bm12applicatie.Resultaten.Resultaat;
 import com.example.diewevg.bm12applicatie.Rooster.LesRooster;
 import com.example.diewevg.bm12applicatie.Leeractiviteit.Leeractiviteit;
@@ -25,9 +24,11 @@ import com.example.diewevg.bm12applicatie.Leeractiviteit.Leeractiviteit;
 public class MainActivity extends AppCompatActivity
     implements
         Resultaat.OnFragmentInteractionListener,
-        DetailResultaat.OnFragmentInteractionListener,
         Leeractiviteit.OnFragmentInteractionListener,
         DetailLeeractiviteit.OnFragmentInteractionListener,
+        LeeractiviteitDocent.OnFragmentInteractionListener,
+        DetailLeeractiviteitDocent.OnFragmentInteractionListener,
+        Feedback.OnFragmentInteractionListener,
         LesRooster.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
 
@@ -93,10 +94,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new Resultaat();
         } else if (id == R.id.lesrooster) {
             fragment = new LesRooster();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.leeractiviteitDocent) {
+            fragment = new LeeractiviteitDocent();
         }
 
         if (fragment != null) {

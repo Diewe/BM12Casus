@@ -6,22 +6,32 @@
 
     <TextView android:id="@+id/naamLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView android:id="@+id/soortLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView android:id="@+id/docentLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView android:id="@+id/datumLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView android:id="@+id/tijdstipLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView android:id="@+id/luchtvochtigheidLeeractiviteit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/temperatuur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -33,14 +43,16 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"/>
+    <TextView android:id="@+id/review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/reviewButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Opslaan review" />
 
-    <TextView android:id="@+id/review"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
+
 </LinearLayout>

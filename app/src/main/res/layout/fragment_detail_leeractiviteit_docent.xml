@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView android:id="@+id/naamLeeractiviteitDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/soortLeeractiviteitDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/datumLeeractiviteitDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/tijdstipLeeractiviteitDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/luchtvochtigheidLeeractiviteitDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <TextView android:id="@+id/temperatuurDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/reviewButtonDocent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bekijk Reviews" />
+</LinearLayout>

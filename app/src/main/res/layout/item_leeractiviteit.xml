@@ -5,11 +5,12 @@
         android:id="@+id/leeractiviteitCursus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cursus" />
+        android:text="Cursus"
+        android:textSize="20sp"/>
     <TextView
         android:id="@+id/leeractiviteitSoort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="Soort" />
+        android:textSize="20sp"/>
 </LinearLayout>
