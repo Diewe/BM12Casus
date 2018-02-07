@@ -125,67 +125,17 @@ public class DetailLeeractiviteit extends Fragment {
                 String starsString = Float.toString(stars);
                 String dataToSave = entryData.getText().toString();
                 String dataStars = dataToSave + "&&" + starsString;
-                String FILENAME = "myFile";
-                Log.d("idd", leeractiviteitId);
-                if (leeractiviteitId.equals("1")) {
-                    FILENAME = "file0";
-                }
-                if (leeractiviteitId.equals("2")){
-                    FILENAME = "file1";
-                }
-                Log.d("filename", FILENAME);
+                String FILENAME = "file" + leeractiviteitId;
+
                 generateNoteOnSD(getActivity(), FILENAME, dataStars);
-                //String url ="http://"+ ip + "/api/feedbacks/";
-
-                //Map<String, String> params = new HashMap();
-                //params.put("FirstName", starsString);
-               // params.put("LastName", entryData.getText().toString());
-                //params.put("Email", "test@mail.com");
-                //params.put("Activity", "Id:1");
-
-                /*Map<String, String> params = new HashMap();
-                params.put("Rating", starsString);
-                params.put("Note", entryData.getText().toString());
-                params.put("Activity", "1");
-                params.put("Student", "Id:1");
-                params.put("Teacher", "{Id:1}");*/
-
-                //Map<String, Integer> params = new HashMap();
-                //params.put("Activity", 1);
-
-
-                //JSONObject parameters = new JSONObject(params);
-
-                /*JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("response", response.toString());
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("post error", error.toString());
-                        error.printStackTrace();
-                    }
-                });*/
-
-                //queue.add(jsonRequest);
-
             }
         });
-
 
         //Find the view by its id
         TextView tv = (TextView) RootView.findViewById(R.id.review);
         String text =  "";
-        if (leeractiviteitId.equals("1")) {
-            text = readFile("file0", getActivity());
-        }
-        if (leeractiviteitId.equals("2")){
-            text = readFile("file1", getActivity());
-        }
-
-        if (!text.equals("")){
+        text = readFile("file" + leeractiviteitId, getActivity());
+        if (!text.equals("Nog geen feedback toegevoegd")){
             String[] splitData = text.split("&&");
             String review = splitData[0];
             String stars = splitData[1];
@@ -241,6 +191,9 @@ public class DetailLeeractiviteit extends Fragment {
     public void generateNoteOnSD(Context context, String sFileName, String sBody) {
         try {
             //sFileName = "myFile";
+            Bundle bundle = this.getArguments();
+            final String leeractiviteitId = bundle.getString("LeeractiviteitId");
+
             File file = new File(context.getExternalFilesDir(
                     Environment.DIRECTORY_PICTURES), "myFile");
 
@@ -262,9 +215,10 @@ public class DetailLeeractiviteit extends Fragment {
 
             //Find the view by its id
             String[] splitData = text.split("&&");
+            String[] starsData = splitData[1].split("#" + leeractiviteitId + "#");
             String review = splitData[0];
             String stars = splitData[1];
-            float floatStars = Float.parseFloat(stars);
+            float floatStars = Float.parseFloat(starsData[0]);
 
             TextView tv = (TextView) getActivity().findViewById(R.id.review);
 

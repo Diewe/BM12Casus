@@ -108,7 +108,7 @@ public class DetailLeeractiviteitDocent extends Fragment {
 
         String text =  "";
         if (leeractiviteitId.equals("0")) {
-            text = readFile("file0", getActivity());
+            text = readFile("file" + leeractiviteitId, getActivity());
         }
         if (leeractiviteitId.equals("1")){
             text = readFile("file1", getActivity());

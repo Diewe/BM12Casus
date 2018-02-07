@@ -80,13 +80,8 @@ public class Feedback extends Fragment {
         TextView feedbackLijst = RootView.findViewById(R.id.feedbackLijst);
         Bundle bundle = this.getArguments();
         final String leeractiviteitId = bundle.getString("LeeractiviteitId");
-    Log.d("id", leeractiviteitId);
-        if (leeractiviteitId.equals("1")) {
-            text = readFile("file0", getActivity());
-        }
-        if (leeractiviteitId.equals("2")){
-            text = readFile("file1", getActivity());
-        }
+
+        text = readFile("file" + leeractiviteitId, getActivity());
 
         if (!text.equals("Geen feedback gevonden")){
             String[] splitData = text.split("&&");
