@@ -49,7 +49,7 @@ public class LeeractiviteitAdapter extends ArrayAdapter<Activity> {
         // Populate the data from the data object via the viewHolder object
         // into the template view.
         viewHolder.cursus.setText(leeractiviteitModel.getActivityType());
-        viewHolder.soort.setText(leeractiviteitModel.getDate());
+        viewHolder.soort.setText(leeractiviteitModel.getCourseCode());
 
         // Return the completed view to render on screen
         return convertView;

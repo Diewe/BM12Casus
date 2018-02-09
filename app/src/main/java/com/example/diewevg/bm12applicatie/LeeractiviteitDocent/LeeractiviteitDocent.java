@@ -106,12 +106,14 @@ public class LeeractiviteitDocent extends Fragment {
 
                                 // Get the current student (json object) data
                                 Integer id = studentJson.getInt("Id");
+                                JSONObject course = studentJson.getJSONObject("Course");
+                                String courseCode = course.optString("CourseCode");
                                 String soortCollege = studentJson.getString("ActivityType");
                                 String startTijd = studentJson.getString("StartTime");
                                 String eindTijd = studentJson.getString("EndTime");
                                 String datum = studentJson.getString("DateTime");
 
-                                Activity leerActiviteit = new Activity(id, soortCollege, datum, startTijd, eindTijd);
+                                Activity leerActiviteit = new Activity(id, soortCollege, datum, startTijd, eindTijd, courseCode);
                                 leerActiviteiten.add(leerActiviteit);
                                 adapter.add(leerActiviteit);
                             }

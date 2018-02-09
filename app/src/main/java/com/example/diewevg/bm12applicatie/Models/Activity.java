@@ -13,17 +13,19 @@ public class Activity {
     String date;
     String startTime;
     String endTime;
+    String courseCode;
 
 
     public Activity() {}
 
-    public Activity(Integer id, String activityType, String date, String startTime, String endTime)
+    public Activity(Integer id, String activityType, String date, String startTime, String endTime, String courseCode)
     {
         this.id = id;
         this.activityType = activityType;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.courseCode = courseCode;
     }
 
     public Integer getId() { return id; }
@@ -61,4 +63,8 @@ public class Activity {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
+
+    public String getCourseCode() { return courseCode; }
+
+    public void setCourseCode(String courseCode) { this.courseCode = courseCode; }
 }
