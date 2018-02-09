@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -90,7 +91,8 @@ public class LesRooster extends Fragment {
 
         //Get Request
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url ="http://192.168.178.17:5930/api/activities"; //http://ptsv2.com/t/bm12/post
+        final String ip = getString(R.string.ipconfig);
+        String url ="http://" + ip + "/api/activities"; //http://ptsv2.com/t/bm12/post
 
         // Initialize a new JsonArrayRequest instance
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -134,6 +136,7 @@ public class LesRooster extends Fragment {
                     }
                 }
         );
+
         queue.add(jsonArrayRequest);
 
         return RootView;
