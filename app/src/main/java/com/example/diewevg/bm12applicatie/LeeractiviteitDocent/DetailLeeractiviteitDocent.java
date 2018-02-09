@@ -23,6 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.diewevg.bm12applicatie.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
@@ -209,6 +212,31 @@ public class DetailLeeractiviteitDocent extends Fragment {
                         SimpleDateFormat tijdFormat = new SimpleDateFormat("HH:mm");
 
                         JSONObject cursus = response.optJSONObject("Course");
+                        JSONObject classroom = response.optJSONObject("Classroom");
+
+
+                        luchtvochtigheid.setText("Luchtvochtigheid: ");
+                        temperatuur.setText("Temperatuur: ");
+                        try
+                        {
+                            JSONArray pidatas = classroom.getJSONArray("PiDatas");
+
+                            for(int i=0;i<pidatas.length();i++)
+                            {
+                                JSONObject docentObject = pidatas.getJSONObject(i);
+                                String temperatuurData = docentObject.optString("Temperature");
+                                String luchtvochtigheidData = docentObject.optString("Humidity");
+
+                                if (i==0){
+                                    luchtvochtigheid.append(luchtvochtigheidData);
+                                    temperatuur.append(temperatuurData);
+                                }
+                            }
+                        }
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
 
                         String cursusCode = cursus.optString("CourseCode");
                         String soortCollege = response.optString("ActivityType");
@@ -220,8 +248,8 @@ public class DetailLeeractiviteitDocent extends Fragment {
                         soort.setText("Soort college: " + soortCollege);
                         datum.setText("Datum: " + datumCollege);
                         tijdstip.setText("Tijdstip: " + startTijd + "-" + eindTijd);
-                        luchtvochtigheid.setText("Luchtvochtigheid: 5%");
-                        temperatuur.setText("Graden Celsius: 23");
+                        //luchtvochtigheid.setText("Luchtvochtigheid: 5%");
+                        //temperatuur.setText("Graden Celsius: 23");
                     }
                 },
                 new Response.ErrorListener(){

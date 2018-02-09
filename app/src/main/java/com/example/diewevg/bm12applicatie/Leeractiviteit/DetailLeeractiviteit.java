@@ -280,6 +280,32 @@ public class DetailLeeractiviteit extends Fragment {
                         SimpleDateFormat tijdFormat = new SimpleDateFormat("HH:mm");
 
                         JSONObject cursus = response.optJSONObject("Course");
+                        JSONObject classroom = response.optJSONObject("Classroom");
+
+
+                        luchtvochtigheid.setText("Luchtvochtigheid: ");
+                        temperatuur.setText("Temperatuur: ");
+                        try
+                        {
+                            JSONArray pidatas = classroom.getJSONArray("PiDatas");
+
+                            for(int i=0;i<pidatas.length();i++)
+                            {
+                                JSONObject docentObject = pidatas.getJSONObject(i);
+                                String temperatuurData = docentObject.optString("Temperature");
+                                String luchtvochtigheidData = docentObject.optString("Humidity");
+
+                                if (i==0){
+                                    luchtvochtigheid.append(luchtvochtigheidData);
+                                    temperatuur.append(temperatuurData);
+                                }
+                            }
+                        }
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+
                         docent.setText("Docent: ");
                         try
                         {
@@ -314,8 +340,7 @@ public class DetailLeeractiviteit extends Fragment {
                         soort.setText("Soort college: " + soortCollege);
                         datum.setText("Datum: " + datumCollege);
                         tijdstip.setText("Tijdstip: " + startTijd + "-" + eindTijd);
-                        luchtvochtigheid.setText("Luchtvochtigheid: 5%");
-                        temperatuur.setText("Graden Celsius: 23");
+
                     }
                 },
                 new Response.ErrorListener(){
